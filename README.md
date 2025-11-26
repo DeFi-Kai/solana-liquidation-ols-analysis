@@ -34,8 +34,7 @@ Used to estimate the effect of system-wide liquidations on JLP volatility.
     panel_jlp.csv      # JLP volatility panel
 
 /code
-    ols_sol.py              # OLS for SOL dataset
-    ols_jlp.py              # OLS for JLP dataset
+     ols_liquidations.ipynb              # OLS for SOL & JLP dataset
 ```
 
 ## Methodology
@@ -57,8 +56,7 @@ Control variables:
 
 ## Running the Models
 ```
-python code/ols_sol.py
-python code/ols_jlp.py
+code/ols_liquidations.ipynb
 ```
 
 # SQL Workflow and Dataset Construction
