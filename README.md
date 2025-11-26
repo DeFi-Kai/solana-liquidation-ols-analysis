@@ -167,7 +167,7 @@ The final panel contains the following fields:
 - Jup Lend Liquidations Decode  
   https://dune.com/queries/6235760/9944340/
 
-- Jup Lend Flash Loans (not used in OLS regression) 
-  https://dune.com/queries/6240660/9951408/
+- Jup Lend Flash Loans (not used in OLS regression)
+  https://dune.com/queries/6235824/9944443/
 
   
