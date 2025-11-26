@@ -60,5 +60,56 @@ Control variables:
 python code/ols_sol.py
 python code/ols_jlp.py
 ```
+---
+# SQL Workflow and Dataset Construction
+
+All preprocessing was performed on Dune Analytics using raw Solana on-chain tables and custom decoding logic for Kamino Lend and Jupiter Lend.
+
+## Base Tables
+
+Three foundational tables were created:
+
+### 1. Jupiter Lend Liquidations
+- Decoded all liquidation events using `operate` instructions, discriminator `d96ad06374972a87`, and i128 debt and collateral fields.
+
+### 2. Jupiter Lend Flash Loans
+- Captured all internal flash-loan events *(not used directly in this OLS analysis).*
+
+### 3. Kamino Lend Liquidations and Flash Loans
+- The Kamino dataset originates from the pre-decoded table published by the Kamino team:
+- `kamino_lend_solana.kamino_lending_call_liquidateobligationandredeemreservecollateralv2`
+
+This table provides decoded instruction-level fields for each liquidation, including:
+- liquidityAmount (raw debt repaid)
+- call_data
+- call_inner_instructions
+
+Additional steps were performed to prepare the data for empirical analysis:
+- Converted liquidityAmount to USD values using token metadata and hourly pricing.
+- Mapped debt USD, symbols, and lending market, by extracting mint addresses from inner instructions.
+
+## Combined Hourly Liquidation Table
+A unified hourly dataset was constructed with the following schema:
+```
+hour
+kamino_debt_repaid_usd_hour_scaled
+jup_debt_repaid_usd_hour
+total_debt_repaid_usd_hour_scaled
+sol_price
+```
+This table merges Kamino and Jupiter liquidation flows into a single, time-aligned series used for the OLS regressions.
+
+### Kamino Scaling Factor
+Kamino’s raw liquidation notional (from liquidityAmount via Dune) overreported aggregate October 10 activity (23.5M debt repaid) relative to protocol-reported totals (19.9M debt repaid). To harmonize datasets, a scaling factor is applied:
+
+```
+scaling_factor = 19.9 / 23.5
+```
+This adjustment preserves the temporal structure of the decoded data while matching the correct order of magnitude.
+
+
+## Liquidation Intensity Proxy
+
+Debt repaid per hour is used as the proxy for liquidation intensity.
 
 
