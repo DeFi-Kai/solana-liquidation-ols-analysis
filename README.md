@@ -150,3 +150,24 @@ The final panel contains the following fields:
 - sol_volume_usd_hour
 
 **The JLP panel was built using identical logic, replacing the SOL mint address with the JLP mint and swapping in JLP volume.**
+
+
+# Data Sources (Dune Queries)
+
+- Combined Kamino + Jupiter Hourly Liquidations  
+  https://dune.com/queries/6236075/9944808/
+
+- SOL Regression Panel  
+  https://dune.com/queries/6236087/9944825/
+
+- JLP Regression Panel  
+  https://dune.com/queries/6236475/9945496/
+
+- Kamino Liquidations & flash loans (base table)  
+  https://dune.com/queries/6236040/9944746/
+
+- Jup Lend Liquidations Decode  
+  https://dune.com/queries/6235760/9944340/
+
+- Jup Lend Flash Loans (not used in OLS regression)
+  https://dune.com/queries/6240660/9951408/
