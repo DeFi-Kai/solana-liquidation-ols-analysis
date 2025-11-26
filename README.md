@@ -138,7 +138,7 @@ This aligns system-wide liquidation intensity with the price and returns series.
 Compute hourly SOL trading volume from jupiter_solana.aggregator_swaps by summing USD notional from any swap where SOL is the input or output token.
 This acts as a liquidity/market-activity control in the OLS model.
 
-### 5. Final OLS-Ready Panel
+## 5. Final OLS-Ready Panel
 
 The final panel contains the following fields:
 - hour
