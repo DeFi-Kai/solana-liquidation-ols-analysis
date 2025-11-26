@@ -30,8 +30,8 @@ Used to estimate the effect of system-wide liquidations on JLP volatility.
 
 ```
 /data
-    sol_regression.csv      # SOL volatility dataset
-    jlp_regression.csv      # JLP volatility panel
+    panel_sol.csv      # SOL volatility dataset
+    panel_jlp.csv      # JLP volatility panel
 
 /code
     ols_sol.py              # OLS for SOL dataset
